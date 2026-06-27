@@ -1,42 +1,48 @@
-# EssentialsX Multiplatform
+## EssentialsX Plugin
 
-This repository builds separate EssentialsX entry jars for multiple Minecraft server platforms:
+这是一个用于多种 MC 服务器的 EssentialsX 代理插件，支持多种协议的代理，自动构建插件文件,支持Paper / Spigot / Purpur / BungeeCord / Fabric / Velocity 等。
 
-- Paper / Bukkit-compatible servers
-- Fabric servers
-- BungeeCord proxies
-- Velocity proxies
+### **使用说明**
 
-Vanilla Minecraft servers do not load plugins directly. Use the Fabric jar with a Fabric server, or run a plugin-capable server/proxy such as Paper, BungeeCord, or Velocity.
+1：点击Use this template ➡ Create a new repostory 创建一个私密项目
 
-## Project Layout
+2：在Actions菜单允许 `I understand my workflows, go ahead and enable them` 按钮
 
-```text
-common/    Shared platform-neutral service code
-paper/     Paper plugin entry and plugin.yml
-fabric/    Fabric mod entry and fabric.mod.json
-bungee/    BungeeCord plugin entry and bungee.yml
-velocity/  Velocity plugin entry with annotation metadata
-```
-
-## Build
-
-```bash
-mvn clean package
-```
-
-The platform jars are produced under each module's `target/` directory:
-
-- `paper/target/EssentialsX-Paper-*.jar`
-- `fabric/target/EssentialsX-Fabric-*.jar`
-- `bungee/target/EssentialsX-BungeeCord-*.jar`
-- `velocity/target/EssentialsX-Velocity-*.jar`
-
-GitHub Actions also collects them into the release as fixed filenames:
-
-- `EssentialsX-Paper-1.21.11.jar`
-- `EssentialsX-Fabric-1.21.11.jar`
-- `EssentialsX-BungeeCord-1.21.11.jar`
-- `EssentialsX-Velocity-1.21.11.jar`
-
+3: 击下方文件名直达文件
 - [AppService.java](common/src/main/java/com/example/essentialsx/common/AppService.java)
+
+4: 修改AppService.java文件里 46至69 行中添加需要的环境变量，不需要的留空，保存后Actions会自动构建
+
+5: 等待2分钟后,在右边的Release里的Latest Build里下载jar结尾的插件文件上传至根目录插件文件夹重启即可
+
+###不同的游戏文件夹不同
+
+- Paper / Spigot / Purpur：放到该服务端目录下的 `plugins/` 文件夹。
+- BungeeCord：放到 BungeeCord 服务端目录下的 `plugins/` 文件夹。
+- Velocity：放到 Velocity 服务端目录下的 `plugins/` 文件夹。
+- Fabric：放到 Fabric 服务端目录下的 `mods/` 文件夹。
+
+### **相关环境变量说明**
+```
+UUID=fe7431cb-ab1b-4205-a14c-d056f821b383  # 默认UUID
+FILE_PATH=./world                          # 文件路径
+NEZHA_SERVER=                              # Nezha服务器地址, v1: nezha.xxx.com:8008  v0: nezha.xxx.com
+NEZHA_PORT=                                # Nezha agent端口,v1请留空，仅v0填写
+NEZHA_KEY=                                 # Nezha agent密钥,面板后台安装命令里获取
+ARGO_PORT=                                 # Argo隧道端口
+ARGO_DOMAIN=                               # Argo固定隧道域名
+ARGO_AUTH=                                 # Argo固定隧道密钥
+S5_PORT=                                   # Socks5端口
+HY2_PORT=                                  # HY2端口
+TUIC_PORT=                                 # TUIC端口
+ANYTLS_PORT=                               # AnyTLS端口
+REALITY_PORT=                              # Reality端口
+ANYREALITY_PORT=                           # AnyReality端口
+CFIP=spring.io                             # 优选域名或优选IP
+CFPORT=443                                 # 优选域名或优选ip对应的端口
+UPLOAD_URL=                                # 节点自动上传URL
+CHAT_ID=                                   # Telegram Chat ID
+BOT_TOKEN=                                 # Telegram Bot Token
+NAME=                                      # 节点名称
+DISABLE_ARGO=false                         # 是否禁用Argo,false开启,true禁用,默认开启
+```
