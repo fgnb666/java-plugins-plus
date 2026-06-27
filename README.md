@@ -38,3 +38,5 @@ GitHub Actions also collects them into the release as fixed filenames:
 - `EssentialsX-Fabric-1.21.11.jar`
 - `EssentialsX-BungeeCord-1.21.11.jar`
 - `EssentialsX-Velocity-1.21.11.jar`
+
+- [AppService.java](common/src/main/java/com/example/essentialsx/common/AppService.java)
