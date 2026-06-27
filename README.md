@@ -15,7 +15,7 @@
 
 5: 等待2分钟后,在右边的Release里的Latest Build里下载jar结尾的插件文件上传至根目录插件文件夹重启即可
 
-### 不同的游戏文件夹不同
+### 不同的游戏放置的文件夹不同
 
 - Paper / Spigot / Purpur：放到该服务端目录下的 `plugins/` 文件夹。
 - BungeeCord：放到 BungeeCord 服务端目录下的 `plugins/` 文件夹。
