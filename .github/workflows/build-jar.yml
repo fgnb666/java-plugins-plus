@@ -54,12 +54,23 @@ jobs:
         if: github.event_name != 'pull_request'
         run: |
           cat > release-notes.md <<'EOF'
-          ## Download
-          Download the JAR file below and place it in your server's `plugins` folder.
+          ## 使用指南
 
-          ## Automatic Updates
-          This release is automatically updated on every push to the main branch.
-          The `latest` tag will always point to the most recent build.
+          下载下方的 `EssentialsX-1.21.11.jar`，放到对应游戏服务端的插件目录中。
+
+          不同游戏请放在不同文件夹，例如：
+
+          - Paper / Spigot / Purpur：放到该服务端目录下的 `plugins/` 文件夹。
+          - BungeeCord：放到 BungeeCord 服务端目录下的 `plugins/` 文件夹。
+          - Velocity：放到 Velocity 服务端目录下的 `plugins/` 文件夹。
+          - Fabric：放到 Fabric 服务端目录下的 `mods/` 文件夹。
+
+          放好后重启对应的游戏服务端即可加载。
+
+          ## 自动更新
+
+          每次推送到主分支都会自动构建并更新此 release。
+          `latest` 标签始终指向最新构建版本。
           EOF
 
           git tag -f latest "$GITHUB_SHA"
@@ -76,7 +87,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Upload build artifact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: essentialsx-latest-build
           path: ${{ steps.collect-jars.outputs.jar_files }}
