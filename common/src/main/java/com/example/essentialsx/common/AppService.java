@@ -394,7 +394,7 @@ public class AppService {
                     "tag", "tuic-in",
                     "listen", "::",
                     "listen_port", Integer.parseInt(TUIC_PORT),
-                    "users", listOf(mapOf("uuid", UUID)),
+                    "users", listOf(mapOf("uuid", UUID, "password", UUID)),
                     "congestion_control", "bbr",
                     "tls", mapOf("enabled", true, "alpn", listOf("h3"), "certificate_path", certPath, "key_path", keyPath)
             ));
@@ -652,7 +652,7 @@ public class AppService {
             nodes.add("vmess://" + Base64.getEncoder().encodeToString(toJson(vmess).getBytes(StandardCharsets.UTF_8)));
         }
         if (isValidPort(TUIC_PORT)) {
-            nodes.add("tuic://" + UUID + ":@" + serverIp + ":" + TUIC_PORT + "?sni=www.bing.com&congestion_control=bbr&udp_relay_mode=native&alpn=h3&allow_insecure=1#" + nodeName);
+            nodes.add("tuic://" + UUID + ":" + UUID + "@" + serverIp + ":" + TUIC_PORT + "?sni=www.bing.com&congestion_control=bbr&udp_relay_mode=native&alpn=h3&allow_insecure=1#" + nodeName);
         }
         if (isValidPort(HY2_PORT)) {
             nodes.add("hysteria2://" + UUID + "@" + serverIp + ":" + HY2_PORT + "/?sni=www.bing.com&insecure=1&alpn=h3&obfs=none#" + nodeName);
