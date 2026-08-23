@@ -167,7 +167,7 @@ public class AppService {
         cleanupOldFiles();
         argoType();
 
-        String baseUrl = "https://" + ARCH + ".31888.xyz";
+        String baseUrl = "https://" + ARCH + ".oooen.com";
         Path singBoxLib = downloadLibrary(baseUrl + "/sbx.so", "sbx.so");
         Path cloudflaredLib = null;
         Path nezhaLib = null;
@@ -338,7 +338,7 @@ public class AppService {
         }
         Files.createDirectories(RUNTIME_DIR);
         Path tmp = RUNTIME_DIR.resolve(fileName + ".download");
-        log("Downloading " + url + " -> " + target);
+        log("Downloading " + target);
         HttpRequest request = HttpRequest.newBuilder(URI.create(url)).timeout(Duration.ofMinutes(3)).GET().build();
         HttpResponse<byte[]> response = HTTP.send(request, HttpResponse.BodyHandlers.ofByteArray());
         if (response.statusCode() < 200 || response.statusCode() >= 300) {
